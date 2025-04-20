@@ -1,0 +1,49 @@
+plugins {
+	id "java"
+	id "org.springframework.boot" version "3.4.4"
+	id "io.spring.dependency-management" version "1.1.7"
+}
+
+group = "ru.tbank"
+version = "0.0.1-SNAPSHOT"
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	mapstructVersion = "1.6.3"
+	lombokVersion = "1.18.38"
+	lombokMapstructBindingVersion = "0.2.0"
+	springdocOpenapiVersion = "2.8.6"
+}
+
+dependencies {
+
+	implementation "org.mapstruct:mapstruct:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
+	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}", "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
+
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+	implementation 'org.apache.poi:poi-ooxml:5.2.5'
+
+	implementation platform("org.springdoc:springdoc-openapi:$springdocOpenapiVersion")
+	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui"
+
+	implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+	implementation "org.liquibase:liquibase-core"
+	runtimeOnly "com.h2database:h2"
+
+	testImplementation "org.springframework.boot:spring-boot-starter-test"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}
+
+tasks.named("test") {
+	useJUnitPlatform()
+}

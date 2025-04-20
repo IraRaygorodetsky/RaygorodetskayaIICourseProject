@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<body>
+<h1>Статистика по студентам</h1>
+
+<p><strong>Общее количество студентов:</strong> <span th:text="${total}"></span></p>
+<p><strong>Средний курс:</strong> <span th:text="${averageCourse}"></span></p>
+
+<p><strong>Самый младший студент:</strong>
+    <span th:text="${youngest != null ? youngest.firstName + ' ' + youngest.lastName : 'нет данных'}"></span>
+</p>
+<p><strong>Самый старший студент:</strong>
+    <span th:text="${oldest != null ? oldest.firstName + ' ' + oldest.lastName : 'нет данных'}"></span>
+</p>
+
+<h3>Количество студентов по факультетам:</h3>
+<ul>
+    <li th:each="entry : ${facultyCount}">
+        <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+    </li>
+</ul>
+
+<a th:href="@{/students-mvc}">Назад к списку</a>
+</body>
+</html>

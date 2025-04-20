@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<body>
+<h1>Редактировать студента</h1>
+<form th:action="@{/students-mvc/{id}(id=${student.id})}" method="post">
+    <p>ID: <span th:text="${student.id}"></span></p>
+    <p>Фамилия: <input type="text" th:field="*{student.lastName}"/></p>
+    <p>Имя: <input type="text" th:field="*{student.firstName}"/></p>
+    <p>Отчество: <input type="text" th:field="*{student.middleName}"/></p>
+    <p>Дата рождения: <input type="date" th:field="*{student.birthDate}"/></p>
+    <p>Телефон: <input type="text" th:field="*{student.phone}"/></p>
+    <p>Email: <input type="text" th:field="*{student.email}"/></p>
+    <p>Курс: <input type="number" th:field="*{student.course}"/></p>
+    <p>Группа: <input type="text" th:field="*{student.fraction}"/></p>
+    <p>Факультет: <input type="text" th:field="*{student.faculty}"/></p>
+    <p>Кафедра: <input type="text" th:field="*{student.department}"/></p>
+    <p><input type="submit" value="Обновить"/></p>
+</form>
+<a th:href="@{/students-mvc}">Назад к списку</a>
+</body>
+</html>

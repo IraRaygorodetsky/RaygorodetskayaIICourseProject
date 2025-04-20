@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1-create-student
+      author: admin
+      changes:
+        - createTable:
+            tableName: student
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: text
+              - column:
+                  name: first_name
+                  type: text
+              - column:
+                  name: middle_name
+                  type: text
+              - column:
+                  name: birth_date
+                  type: date
+              - column:
+                  name: phone
+                  type: text
+              - column:
+                  name: email
+                  type: text
+              - column:
+                  name: course
+                  type: int
+              - column:
+                  name: fraction
+                  type: text
+              - column:
+                  name: department
+                  type: text
+              - column:
+                  name: faculty
+                  type: text
+              - column:
+                  name: title
+                  type: text

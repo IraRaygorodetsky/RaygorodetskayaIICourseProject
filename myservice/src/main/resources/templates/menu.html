@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<body>
+<h1>Меню</h1>
+
+<ul>
+  <li><a th:href="@{/students-mvc}">Список студентов</a></li>
+  <li><a th:href="@{/students-mvc/new}">Создать нового студента</a></li>
+  <li><a th:href="@{/students-mvc/statistics}">Статистика</a></li>
+  <li><a href="#" onclick="document.getElementById('about').style.display='block'">Об авторе</a></li>
+</ul>
+
+<div id="about" style="display: none; margin-top: 20px;">
+  <h2>Об авторе</h2>
+  <p>Приложение создала Райгородецкая Ирина, студентка группы ДПИ22-2</p>
+</div>
+</body>
+</html>

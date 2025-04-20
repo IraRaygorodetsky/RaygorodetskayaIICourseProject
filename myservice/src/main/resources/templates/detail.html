@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<head>
+    <meta charset="UTF-8">
+    <title>Данные студента</title>
+</head>
+<body>
+<h1>Данные студента</h1>
+
+<p>ID: <span th:text="${student.id}"></span></p>
+<p>Фамилия: <span th:text="${student.lastName}"></span></p>
+<p>Имя: <span th:text="${student.firstName}"></span></p>
+<p>Отчество: <span th:text="${student.middleName}"></span></p>
+<p>Дата рождения: <span th:text="${student.birthDate}"></span></p>
+<p>Телефон: <span th:text="${student.phone}"></span></p>
+<p>Email: <span th:text="${student.email}"></span></p>
+<p>Курс: <span th:text="${student.course}"></span></p>
+<p>Группа: <span th:text="${student.fraction}"></span></p>
+<p>Факультет: <span th:text="${student.faculty}"></span></p>
+<p>Кафедра: <span th:text="${student.department}"></span></p>
+
+<a th:href="@{/students-mvc}">Назад к списку</a>
+
+<form th:action="@{/students-mvc/{id}/delete(id=${student.id})}" method="post" style="display:inline;">
+    <input type="submit" value="Удалить"/>
+</form>
+
+<hr/>
+
+<h2>Скачать заявление на курсовую</h2>
+<form th:action="@{/students-mvc/{id}/document(id=${student.id})}" method="get">
+    <label for="title">Тема курсовой:</label>
+    <input type="text" id="title" name="title" placeholder="Введите тему" required style="width: 300px;"/>
+    <button type="submit">Скачать заявление</button>
+</form>
+
+</body>
+</html>

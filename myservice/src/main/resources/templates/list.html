@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<body>
+<h1>Список студентов</h1>
+<ul>
+    <li><a th:href="@{/students-mvc/menu}">Меню</a></li>
+</ul>
+<br/><br/>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Дата рождения</th>
+        <th>Телефон</th>
+        <th>Email</th>
+        <th>Курс</th>
+        <th>Группа</th>
+        <th>Факультет</th>
+        <th>Кафедра</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.middleName}"></td>
+        <td th:text="${student.birthDate}"></td>
+        <td th:text="${student.phone}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${student.course}"></td>
+        <td th:text="${student.fraction}"></td>
+        <td th:text="${student.faculty}"></td>
+        <td th:text="${student.department}"></td>
+        <td>
+            <a th:href="@{/students-mvc/{id}(id=${student.id})}">Посмотреть</a> |
+            <a th:href="@{/students-mvc/{id}/edit(id=${student.id})}">Редактировать</a> |
+            <form th:action="@{/students-mvc/{id}/delete(id=${student.id})}" method="post" style="display:inline;">
+                <input type="submit" value="Удалить"/>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
